@@ -1,0 +1,195 @@
+/* ===== SMOOTH TRANSITIONS ===== */
+body {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ===== SECTION ANIMATION ===== */
+.section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  display: none;
+}
+
+.section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== CARD ANIMATION ===== */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* ===== BUTTON ANIMATION ===== */
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* ===== PROFILE DROPDOWN ===== */
+.profile {
+  position: relative;
+  z-index: 1000;
+}
+
+.profile-box {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  z-index: 9999;
+
+  background:white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 150px;
+
+  display: none;   /* SIMPLE + RELIABLE */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.logbutton{
+  background: rgb(201, 4, 4);
+  color:aliceblue;
+}
+
+.profile-box.show {
+  display: block;
+
+}
+/* ===== SIDEBAR BUTTON ACTIVE ===== */
+.sidebar button.active-btn {
+  background: #4f46e5;
+  color: white;
+}
+
+/* ===== FADE IN PAGE ===== */
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ===== LIGHT MODE (FIXED FOR YOUR UI) ===== */
+body.light {
+  background: linear-gradient(135deg, #7994eb, #5c9ee1);
+  color: #1e293b;
+}
+
+/* Sidebar */
+body.light .sidebar {
+  background: #9db1f3;
+  backdrop-filter: blur(15px);
+  color: #1e293b;
+}
+
+body.light .sidebar button {
+  color: #1e293b;
+}
+
+body.light .sidebar button:hover {
+  background: rgba(99,102,241,0.2);
+}
+
+/* Navbar */
+body.light .navbar {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  color: #1e293b;
+}
+
+/* Cards */
+body.light .card {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  color: #1e293b;
+}
+
+/* Table */
+body.light table {
+  background: rgba(255,255,255,0.95);
+  color: #1e293b;
+}
+
+body.light th {
+  background: #6366f1;
+}
+
+body.light tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+body.light tr:hover {
+  background: #e0e7ff;
+}
+
+/* Profile box */
+body.light .profile-box {
+  background: #b0bfef;
+  color: #1e293b;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  z-index: 99999;
+}
+
+
+body.light .navbar {
+  position: relative;
+  z-index: 5000;
+}
+
+body.light .profile {
+  position: relative;
+  z-index: 6000;
+}
+
+body.light .cards,
+body.light .section,
+body.light .content {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+body.light .profile-box {
+  transition: all 0.25s ease;
+}
+body.light .profile button:hover {
+  transform: scale(1.1);
+}
+body.light .card:hover {
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+body.light .tr:hover {
+  transform: scale(1.01);
+  transition: 0.2s;
+}
+body .ligh{
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+}
+
+/* Inputs */
+body.light input,
+body.light select {
+  background: white;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+}
+
+body.light .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}

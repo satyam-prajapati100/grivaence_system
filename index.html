@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grievance System</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      background: linear-gradient(135deg,#0f172a, #6366f1);
+      font-family: Arial;
+      margin: 0;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background: white;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .navbar a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .lang-btn {
+      cursor: pointer;
+      border: none;
+      background: #eee;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-left: 5px;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      margin-top: 40px;
+      color: white;
+    }
+
+    .btn {
+      margin-top: 15px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .btn-primary { background:#dc2626; color: white; }
+    .btn-danger { background: #dc2626; color: white; }
+    .btn-map { background: #059669; color: white; }
+
+    /* SECTION */
+    .section {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .cat {
+      text-align: center;
+      font-size: 18px;
+    }
+
+    /* CARDS */
+    .card {
+      background: white;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+
+    .status {
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .Pending { background: orange; color: white; }
+    .Resolved { background: green; color: white; }
+    .In\ Progress { background: blue; color: white; }
+
+    /* PROFILE */
+    .profile-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-box {
+      position: absolute;
+      right: 0;
+      top: 40px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      width: 180px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+  </style>
+</head>
+
+<body class="fade-in">
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+  <h2 id="title">Grievance System</h2>
+
+  <div>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('hi')">हिंदी</button>
+
+    <a href="index.html">Home</a>
+    <a href="submit.html">Submit</a>
+    <a href="track.html">Track</a>
+    <a href="admin.html" id="adminLink">Admin</a>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div style="display:flex; align-items:center; gap:10px;">
+
+    <button class="lang-btn" onclick="goToLogin()">Login</button>
+    <button class="lang-btn" onclick="openSignup()">Signup</button>
+    <button onclick="toggleTheme()" class="theme-btn">🌙</button>
+
+    <!-- PROFILE -->
+    <div class="profile-wrapper">
+
+      <button class="lang-btn" onclick="toggleProfile()">👤 Profile</button>
+
+      <div id="profileBox" class="profile-box hidden">
+        <p><b>Name:</b> <span id="profileName"></span></p>
+        <p><b>Role:</b> <span id="profileRole"></span></p>
+
+        <button onclick="logout()">Logout</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 id="heading">Smart Grievance Redressal System</h1>
+  <p id="subtext">AI-powered complaint classification</p>
+
+  <button class="btn btn-primary" onclick="goToSubmit()">Submit Complaint</button>
+  <button class="btn btn-track" onclick="goToTrack()">Track Your Complaint</button>
+  <!-- <button class="btn btn-danger" onclick="goToSubmit()">🚨 Emergency Complaint</button> -->
+  <!-- <button class="btn btn-map" onclick="openMap()"> -->
+  <!-- 📍 Check Nearby Issues -->
+<!-- </button> -->
+</div>
+
+
+<!-- CATEGORIES -->
+<div class="section">
+  <h3 id="view">View Categories</h3>
+
+  <div class="categories">
+    <div class="cat">🛣️ Roads</div>
+    <div class="cat">⚡ Electricity</div>
+    <div class="cat">💧 Water</div>
+    <div class="cat">🧹 Sanitation</div>
+    <div class="cat">🤖 Public</div>
+  </div>
+</div>
+
+<!-- RECENT -->
+<section style="max-width:900px;margin:auto;">
+  <h2 style="text-align:center;color:white;">Recent Complaints</h2>
+  <div id="recent"></div>
+</section>
+
+<script>
+let complaints = [
+  {id:"GRV101", text:"Road damage near market", status:"Pending"},
+  {id:"GRV102", text:"Water leakage issue", status:"Resolved"},
+  {id:"GRV103", text:"Electricity outage", status:"In Progress"}
+];
+
+let container = document.getElementById("recent");
+
+complaints.forEach(c=>{
+  container.innerHTML += `
+    <div class="card">
+      <h4>${c.id}</h4>
+      <p>${c.text}</p>
+      <span class="status">${c.status}</span>
+    </div>
+  `;
+});
+
+function goToSubmit(){
+  window.location.href="submit.html";
+}
+
+function goToLogin(){
+  window.location.href="login.html";
+}
+
+function goToTrack(){
+  window.location.href="track.html";
+}
+
+function setLang(lang){
+  if(lang==="hi"){
+    document.getElementById("heading").innerText="स्मार्ट शिकायत प्रणाली";
+    document.getElementById("subtext").innerText="एआई आधारित वर्गीकरण";
+  } else {
+    document.getElementById("heading").innerText="Smart Grievance Redressal System";
+    document.getElementById("subtext").innerText="AI-powered complaint classification";
+  }
+}
+</script>
+
+<script src="main.js"></script>
+<script>
+  checkAuth();
+</script>
+
+</body>
+</html>

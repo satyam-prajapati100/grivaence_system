@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Map</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  // Default location (Bhopal)
+  let map = L.map('map').setView([23.2599, 77.4126], 13);
+
+  // OpenStreetMap layer (FREE)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap'
+  }).addTo(map);
+
+  // Get live user location
+  navigator.geolocation.getCurrentPosition(
+    function(position) {
+      let lat = position.coords.latitude;
+      let lng = position.coords.longitude;
+
+      // Move map to user location
+      map.setView([lat, lng], 15);
+
+      // Add marker
+      L.marker([lat, lng]).addTo(map)
+        .bindPopup("📍 You are here")
+        .openPopup();
+    },
+    function() {
+      alert("Location permission denied ❌");
+    }
+  );
+</script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Grievance System</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+
+<!-- 🔷 NAVBAR -->
+<header class="navbar">
+  <h2>Smart Grievance</h2>
+
+  <div>
+    <button onclick="openLogin()">Login</button>
+    <button onclick="openSignup()">Signup</button>
+  </div>
+</header>
+
+<!-- 🔷 HERO SECTION -->
+<section class="hero">
+  <h1>Raise Your Voice. Get Issues Solved.</h1>
+  <p>AI-powered complaint system for faster resolution</p>
+
+  <div class="hero-buttons">
+    <button onclick="goToSubmit()">Submit Complaint</button>
+    <button onclick="goToTrack()">Track Complaint</button>
+  </div>
+</section>
+
+<!-- 🔷 CATEGORIES -->
+<section class="categories">
+  <h2>View Categories</h2>
+
+  <div class="category-grid">
+    <div class="card">🛣️ Roads</div>
+    <div class="card">⚡ Electricity</div>
+    <div class="card">💧 Water</div>
+    <div class="card">🧹 Sanitation</div>
+    <div class="card">🤖 Public</div>
+  </div>
+</section>
+
+<!-- 🔷 QUICK ACTIONS -->
+<section class="actions">
+  <h2>Quick Actions</h2>
+
+  <div class="action-grid">
+    <button class="action-btn" onclick="goToSubmit()">➕ Submit Complaint</button>
+    <button class="action-btn" onclick="goToTrack()">🔍 Track Complaint</button>
+    <button class="action-btn">📎 Upload Proof</button>
+  </div>
+</section>
+
+<!-- 🔷 RECENT COMPLAINTS -->
+<section class="recent">
+  <h2>Recent Complaints</h2>
+
+  <div class="recent-list">
+    <div class="recent-card">Pothole on Main Road - Pending</div>
+    <div class="recent-card">Water leakage - Resolved</div>
+    <div class="recent-card progress">Street light issue - In Progress</div>
+  </div>
+</section>
+
+<!-- 🔷 LOGIN MODAL -->
+<div id="loginModal" class="modal hidden">
+  <div class="modal-content">
+    <span onclick="closeModal()">×</span>
+    <h3>Login</h3>
+    <input type="email" id="loginEmail" placeholder="Email">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- 🔷 SIGNUP MODAL -->
+<div id="signupModal" class="modal hidden">
+  <div class="modal-content">
+    <span onclick="closeModal()">×</span>
+    <h3>Signup</h3>
+    <input type="text" id="signupName" placeholder="Name">
+    <input type="email" id="signupEmail" placeholder="Email">
+    <input type="password" id="signupPassword" placeholder="Password">
+    <button onclick="signup()">Signup</button>
+  </div>
+</div>
+
+<!-- 🔷 JS -->
+<script>
+
+function openLogin() {
+  document.getElementById("loginModal").classList.remove("hidden");
+}
+
+function openSignup() {
+  document.getElementById("signupModal").classList.remove("hidden");
+}
+
+function closeModal() {
+  document.getElementById("loginModal").classList.add("hidden");
+  document.getElementById("signupModal").classList.add("hidden");
+}
+
+function goToSubmit() {
+  window.location.href = "submit.html";
+}
+
+function goToTrack() {
+  window.location.href = "track.html";
+}
+
+</script>
+
+</body>
+</html>

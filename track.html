@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Track Complaint</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <h2>Track Complaint 🔍</h2>
+
+  <!-- SEARCH -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Enter Complaint ID or Phone">
+    <button onclick="searchComplaint()">Search</button>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result" class="hidden">
+
+    <!-- HEADER -->
+    <div class="card header">
+      <h3 id="complaintId">GRV00000</h3>
+      <span id="statusBadge" class="badge pending">Pending</span>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline">
+      <div class="step active">Submitted</div>
+      <div class="step active">In Review</div>
+      <div class="step active">Assigned</div>
+      <div class="step ">Resolve</div>
+    </div>
+
+    <!-- DETAILS -->
+    <div class="card">
+      <p><strong>Category:</strong> <span id="category"></span></p>
+      <p><strong>Priority:</strong> <span id="priority"></span></p>
+      <p><strong>Location:</strong> <span id="location"></span></p>
+      <p><strong>Description:</strong> <span id="description"></span></p>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="card">
+      <h4>Proof 📸</h4>
+      <img id="imagePreview" src="" alt="No Image">
+    </div>
+
+    <!-- OFFICER -->
+    <div class="card">
+      <h4>Assigned Officer 👤</h4>
+      <p id="officerName"></p>
+      <p id="department"></p>
+      <p id="contact"></p>
+    </div>
+
+    <!-- TIME -->
+    <div class="card">
+      <p><strong>Submitted:</strong> <span id="submitted"></span></p>
+      <p><strong>Last Updated:</strong> <span id="updated"></span></p>
+    </div>
+
+    <!-- REFRESH -->
+    <button class="refresh" onclick="refreshStatus()">Check Latest Status 🔄</button>
+
+  </div>
+
+</div>
+
+<script>
+
+/* ================= DUMMY DATA ================= */
+const data = {
+  id: "GRV12345",
+  status: "In Progress",
+  category: "Roads",
+  priority: "High 🚨",
+  location: "Bhopal",
+  description: "Potholes on main road causing traffic issues",
+  image: "https://via.placeholder.com/300",
+  officer: "Rajesh Sharma",
+  department: "Municipal Corporation",
+  contact: "9876543210",
+  submitted: "24 April 2026",
+  updated: "2 hours ago"
+};
+
+/* ================= SEARCH ================= */
+function searchComplaint() {
+  let input = document.getElementById("searchInput").value;
+
+  if (!input) {
+    alert("Enter ID or Phone");
+    return;
+  }
+
+  document.getElementById("result").classList.remove("hidden");
+
+  document.getElementById("complaintId").innerText = data.id;
+  document.getElementById("category").innerText = data.category;
+  document.getElementById("priority").innerText = data.priority;
+  document.getElementById("location").innerText = data.location;
+  document.getElementById("description").innerText = data.description;
+  document.getElementById("imagePreview").src = data.image;
+
+  document.getElementById("officerName").innerText = data.officer;
+  document.getElementById("department").innerText = data.department;
+  document.getElementById("contact").innerText = data.contact;
+
+  document.getElementById("submitted").innerText = data.submitted;
+  document.getElementById("updated").innerText = data.updated;
+
+  updateStatus(data.status);
+}
+
+/* ================= STATUS ================= */
+function updateStatus(status) {
+  let badge = document.getElementById("statusBadge");
+  badge.innerText = status;
+
+  badge.className = "badge";
+
+  if (status === "Pending") badge.classList.add("pending");
+  else if (status === "In Progress") badge.classList.add("progress");
+  else badge.classList.add("resolved");
+}
+
+/* ================= REFRESH ================= */
+function refreshStatus() {
+  alert("Status updated (demo)");
+}
+
+</script>
+<script src="main.js"></script>
+<script>
+  checkAuth();
+</script>
+</body>
+</html>

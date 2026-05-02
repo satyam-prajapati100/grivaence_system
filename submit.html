@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Complaint</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="form-container">
+
+  <h2 id="title">Submit Complaint</h2>
+
+  <!-- Name -->
+  <label>Name 👤</label>
+  <input type="text" id="name" placeholder="Enter your name">
+
+  <!-- Contact -->
+  <label>Phone / Email 📞</label>
+  <input type="text" id="contact" placeholder="Enter phone or email">
+
+  <!-- Location -->
+  <label>Location 📍</label>
+  <input type="text" id="location" placeholder="Location">
+  <button class="btn-small" onclick="getLocation()">Use My Location</button>
+
+  <p id="coords"></p>
+
+  <!-- Category -->
+  <!-- <label>Category 📂</label>
+  <select id="category">
+    <option>Roads</option>
+    <option>Electricity</option>
+    <option>Water</option>
+    <option>Sanitation</option>
+  </select> -->
+
+  <!-- Priority -->
+  <!-- <label>Priority 🚨</label>
+  <select id="priority">
+    <option>Normal</option>
+    <option>High</option>
+    <option>Emergency</option>
+  </select> -->
+
+  <!-- Complaint -->
+  <label>Complaint 📝</label>
+  <textarea id="complaint" rows="4" placeholder="Describe issue..."></textarea>
+
+  <!-- AI Prediction
+  <div class="ai-box">
+    <p><strong>AI Category:</strong> <span id="aiCategory">-</span></p>
+    <p><strong>Confidence:</strong> <span id="aiConfidence">-</span></p>
+  </div> -->
+
+  <!-- File Upload -->
+  <label>Upload Proof 📎</label>
+  <input type="file" id="file">
+
+  <!-- Submit -->
+  <button id="submitBtn" onclick="submitForm()">Submit Complaint</button>
+
+  <!-- Loading -->
+  <div id="loading" class="hidden">Submitting...</div>
+
+  <!-- Success -->
+  <div id="success" class="hidden"></div>
+
+</div>
+
+<script>
+/* ================= AI PREDICTION (FAKE DEMO) ================= */
+document.getElementById("complaint").addEventListener("input", function() {
+  let text = this.value.toLowerCase();
+
+  let category = "General";
+  let confidence = (Math.random() * 20 + 80).toFixed(2) + "%";
+
+  if (text.includes("road")) category = "Roads";
+  else if (text.includes("water")) category = "Water";
+  else if (text.includes("electric")) category = "Electricity";
+  else if (text.includes("garbage")) category = "Sanitation";
+
+  document.getElementById("aiCategory").innerText = category;
+  document.getElementById("aiConfidence").innerText = confidence;
+});
+
+/* ================= LOCATION ================= */
+function getLocation() {
+  navigator.geolocation.getCurrentPosition(pos => {
+    let lat = pos.coords.latitude;
+    let lon = pos.coords.longitude;
+
+    document.getElementById("coords").innerText =
+      "Lat: " + lat + " , Lon: " + lon;
+  });
+}
+
+/* ================= SUBMIT ================= */
+function submitForm() {
+
+  let btn = document.getElementById("submitBtn");
+  let loading = document.getElementById("loading");
+  let success = document.getElementById("success");
+
+  btn.disabled = true;
+  loading.classList.remove("hidden");
+
+  setTimeout(() => {
+    loading.classList.add("hidden");
+
+    let id = "GRV" + Math.floor(Math.random() * 100000);
+
+    success.classList.remove("hidden");
+    success.innerHTML = "✅ Complaint Submitted!<br>ID: <b>" + id + "</b>";
+
+    btn.disabled = false;
+  }, 2000);
+}
+
+/* ================= LANGUAGE ================= */
+function setLang(lang) {
+  if (lang === "hi") {
+    document.getElementById("title").innerText = "शिकायत दर्ज करें";
+  } else {
+    document.getElementById("title").innerText = "Submit Complaint";
+  }
+}
+</script>
+<script src="main.js"></script>
+<script>
+  checkAuth();
+</script>
+</body>
+</html>

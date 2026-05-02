@@ -1,0 +1,284 @@
+/* GLOBAL */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f6fb;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /*  center whole layout */
+}
+
+/* MAIN WIDTH CONTROL */
+.hero,
+.card-section,
+.table-section,
+.navbar {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* NAVBAR */
+.navbar {
+  background: #243653;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0 0 12px 12px;
+}
+
+.navbar button {
+  margin-left: 10px;
+  padding: 8px 14px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.navbar button:hover {
+  background: #2563eb;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+/* CARD SECTION */
+.card-section {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+/* GRID (CENTERED) */
+.grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center; /* ✅ center cards */
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 220px;
+  text-align: center; /* ✅ center text */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* RECENT COMPLAINTS (CENTERED) */
+#recent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* STATUS TAGS */
+.status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.status.Pending {
+  background: orange;
+  color: white;
+}
+
+.status.Resolved {
+  background: green;
+  color: white;
+}
+
+.status.In\ Progress {
+  background: #3b82f6;
+  color: white;
+}
+
+/* ADMIN STATS */
+.stats {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 200px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.Total{
+  background:#2563eb;
+  color:white;
+}
+.Pending{
+  background:orange;
+  color:white;
+}
+.Resolved{
+  background:green;
+  color:white;
+}
+
+.emergency {
+  background: red;
+  color: white;
+}
+
+/* TABLE SECTION */
+.table-section {
+  padding: 30px 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background: #3b82f6;
+  color: white;
+}
+
+/* BUTTONS */
+button {
+  padding: 6px 10px;
+  margin: 2px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+/* MAIN CTA BUTTON (CENTER HERO BUTTON) */
+.main-btn {
+  margin-top: 20px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  background:  #3bf69c;   /* premium orange */
+  color: white;
+  border: black;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.main-btn:hover {
+  background: #ea580c;
+
+  transform: scale(1.05);
+}
+
+
+/* FILTER SECTION */
+.filters {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filters input, .filters select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* PRIORITY COLORS */
+.priority {
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: white;
+}
+
+.priority.High {
+  background: orange;
+}
+
+.priority.Normal {
+  background: gray;
+}
+
+.priority.Emergency {
+  background: red;
+}
+
+/* EMERGENCY SECTION */
+.emergency-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.emergency-section h3 {
+  color: red;
+}
+
+/* TABLE ROW HOVER */
+tr:hover {
+  background: #f1f5f9;
+  transition: 0.3s;
+}
+
+.analyze-btn {
+  margin: 20px;
+  padding: 10px 20px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.analyze-btn:hover {
+  background: #059669;
+}
+
+#analysisResult {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
